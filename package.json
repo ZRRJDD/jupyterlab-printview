@@ -1,0 +1,64 @@
+{
+  "name": "jupyterlab-printview",
+  "version": "0.1.0",
+  "description": "jupyter nbconvert ipynb to html/pdf ..",
+  "keywords": [
+    "jupyter",
+    "jupyterlab",
+    "jupyterlab-extension"
+  ],
+  "homepage": "https://github.com/ZRRJDD/jupyterlab-printview",
+  "bugs": {
+    "url": "https://github.com/ZRRJDD/jupyterlab-printview/issues"
+  },
+  "license": "BSD-3-Clause",
+  "author": "ZRRJDD",
+  "files": [
+    "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
+    "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}",
+    "schema/*.json"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "style": "style/index.css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZRRJDD/jupyterlab-printview.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "prepare": "jlpm run clean && jlpm run build",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@jupyterlab/application": "^1.0.0",
+    "@jupyterlab/apputils": "^1.2.1",
+    "@jupyterlab/coreutils": "^3.2.0",
+    "@jupyterlab/docregistry": "^1.2.1",
+    "@jupyterlab/notebook": "^1.2.2",
+    "@jupyterlab/services": "^4.2.0"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.1",
+    "typescript": "~3.5.2"
+  },
+  "sideEffects": [
+    "style/*.css"
+  ],
+  "jupyterlab": {
+    "extension": true,
+    "discovery": {
+      "server": {
+        "manager":[
+          "pip",
+          "conda"
+        ],
+        "base":{
+          "name":"jupyterlab-printview"
+        }
+      }
+    },
+    "schemaDir":"schema"
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "jupyter.lab.setting-icon-class":"fa fa-print",
+    "jupyter.lab.setting-icon-label":"PrintView",
+    "title":"PrintView",
+    "description":"jupyter nbconvert to html/pdf....",
+    "properties":{
+        "baseDir":{
+            "title":"baseDir",
+            "type":"string",
+            "description":"file root path",
+            "default":""
+        },
+        "nbconvertOptions":{
+            "title":"nbconver-options",
+            "type":"string",
+            "description":"--to html_embed --TemplateExporter.exclude_input=True  --TemplateExporter.exclude_output_prompt=True --template=xxx.tpl ",
+            "default":"--to html "
+        }
+    },
+    "type":"object"
+}

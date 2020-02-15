@@ -36,7 +36,7 @@ const printViewPlugin: JupyterFrontEndPlugin<void> = {
     async function updateSettings(settings:ISettingRegistry.ISettings):Promise<void>{
       baseDir = settings.get(BASE_DIR).composite as string | null;
       nbconvertOptions = settings.get(NBCONVERT_OPTIONS).composite as string | null;
-      saveStateDb(baseDir,baseDir);
+      saveStateDb(BASE_DIR,baseDir);
       saveStateDb(NBCONVERT_OPTIONS,nbconvertOptions);
     }
 
@@ -81,7 +81,8 @@ export class ButtonExtensionPrintHtml implements DocumentRegistry.IWidgetExtensi
         const filePath = dict[BASE_DIR]+localPath;
         const defalutKernel = context.session.kernel;
 
-        const code = "import os;os.system(\"jupyter nbconvert "+dict['nbconvertOptions']+" "+filePath+" \")"
+        const code = "import os;os.system(\"jupyter nbconvert "+dict[NBCONVERT_OPTIONS]+" "+filePath+" \")"
+        console.log(code);
         Promise.all([defalutKernel.requestExecute({"code":code}).done]).then(()=>{
           commands.execute("docmanager:open",{path:htmlPath})
         })

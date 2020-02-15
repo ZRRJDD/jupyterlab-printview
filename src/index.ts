@@ -12,6 +12,7 @@ import { ToolbarButton } from '@jupyterlab/apputils';
 const BASE_DIR = 'baseDir';
 const NBCONVERT_OPTIONS = 'nbconvertOptions';
 const PLUGIN_ID = 'jupyterlab-printview';
+const SETTING_ID = "jupyterlab-printview:plugin";
 
 /**
  * Initialization data for the jupyterlab-printview extension.
@@ -39,7 +40,7 @@ const printViewPlugin: JupyterFrontEndPlugin<void> = {
       saveStateDb(NBCONVERT_OPTIONS,nbconvertOptions);
     }
 
-    Promise.all([settingRegistry.load(PLUGIN_ID)]).then(async ([settings]) => {
+    Promise.all([settingRegistry.load(SETTING_ID)]).then(async ([settings]) => {
       await updateSettings(settings);
       settings.changed.connect(async () =>{
         await updateSettings(settings);
